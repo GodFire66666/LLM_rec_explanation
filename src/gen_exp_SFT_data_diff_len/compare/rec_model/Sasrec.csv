@@ -1,0 +1,8 @@
+rec_model,length,win ratio
+Sasrec,0,0.125
+Sasrec,10,0.30833333333333335
+Sasrec,20,0.30833333333333335
+Sasrec,50,0.5
+Sasrec,100,0.525
+Sasrec,200,0.5
+Sasrec,500,0.575

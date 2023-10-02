@@ -1,0 +1,41 @@
+# environment config
+gpu_id: 3
+checkpoint_dir : experiments/steam/FM #模型保存的路径
+#save_dataset: True
+log_wandb: True
+wandb_project: RecBole
+wandb_name: FM-steam
+
+# model config
+embedding_size: 32
+# dataset config
+field_separator: "\t" #指定数据集field的分隔符
+seq_separator: " " #指定数据集中token_seq或者float_seq域里的分隔符
+USER_ID_FIELD: user_id #指定用户id域
+ITEM_ID_FIELD: product_id #指定物品id域
+RATING_FIELD: rating #指定打分rating域
+TIME_FIELD: timestamp #指定时间域
+NEG_PREFIX: neg_ #指定负采样前缀
+LABEL_FIELD: label #指定标签域
+#因为数据集没有标签，所以设置一个阈值，认为rating高于该值的是正例，反之是负例
+threshold:
+    rating: 4
+#指定从什么文件里读什么列，这里就是从ml-1m.inter里面读取user_id, item_id, rating, timestamp这四列,剩下的以此类推
+load_col:
+  inter: [user_id, product_id, timestamp]
+
+# training settings
+epochs: 500 #训练的最大轮数
+train_batch_size: 4096 #训练的batch_size
+learner: adam #使用的pytorch内置优化器
+learning_rate: 0.0001 #学习率
+train_neg_sample_args:
+eval_step: 1 #每次训练后做evalaution的次数
+stopping_step: 10 #控制训练收敛的步骤数，在该步骤数内若选取的评测标准没有什么变化，就可以提前停止了
+# evalution settings
+eval_args: {group_by: user, order: TO, split: {LS: valid_and_test}, mode: full}  #对数据随机重排，设置按比例划分数据集
+metrics: ["NDCG", "Recall", "MRR"] #评测标准
+topk: [10, 20]
+valid_metric: NDCG@10 #选取哪个评测标准作为作为提前停止训练的标准
+eval_batch_size: 4096 #评测的batch_size
+

@@ -1,0 +1,8 @@
+dataset,length,win ratio
+mind_small_dev,0,0.21666666666666667
+mind_small_dev,10,0.35833333333333334
+mind_small_dev,20,0.3416666666666667
+mind_small_dev,50,0.5
+mind_small_dev,100,0.5416666666666666
+mind_small_dev,200,0.5
+mind_small_dev,500,0.5166666666666667

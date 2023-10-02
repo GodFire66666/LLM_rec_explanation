@@ -1,0 +1,6 @@
+{
+    "description": "LLaMA2-Rec的实验模板。",
+    "prompt_input": "[INST] <<SYS>>/nPlease give a proper response to the instruction. Do not say 'I don't know.\n<</SYS>>\n\n{instruction}\n{input} [/INST]",
+    "prompt_no_input": "[INST] <<SYS>>/nPlease give a proper response to the instruction. Do not say 'I don't know.\n<</SYS>>\n\n{instruction} [/INST]",
+    "response_split": " [/INST]"
+}

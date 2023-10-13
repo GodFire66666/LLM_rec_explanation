@@ -21,7 +21,7 @@ python infer.py \
     --base_model './experiments/可解释推荐/LLaMA2/'$exp_tag'/hf_ckpt' \
     --lora_weights './experiments/可解释推荐/LLaMA2/'$exp_tag \
     --use_lora False \
-    --instruct_dir './data/可解释推荐data/test.json' \
+    --instruct_dir './data/exp_data/test.json' \
     --prompt_template_name_cn '可解释推荐LLaMA2' \
     --prompt_template_name_en '可解释推荐LLaMA2'
 

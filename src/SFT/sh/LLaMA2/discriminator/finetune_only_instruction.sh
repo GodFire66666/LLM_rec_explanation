@@ -35,14 +35,14 @@ echo "*********** Finetune ***********\n"
 python finetune.py \
     --model_name 'LLaMA2' \
     --base_model './base_model/LLaMA2-7b-chat-base-model/hf_ckpt' \
-    --data_path './data/判别器data/test_new.json' \
-    --output_dir './experiments/判别器/LLaMA2-判别器/'$exp_tag \
-    --prompt_template_name_cn '判别器LLaMA2' \
-    --prompt_template_name_en '判别器LLaMA2' \
+    --data_path './data/disc_data/test_new.json' \
+    --output_dir './experiments/disc/LLaMA2-disc/'$exp_tag \
+    --prompt_template_name_cn 'disc_LLaMA2' \
+    --prompt_template_name_en 'disc_LLaMA2' \
     --micro_batch_size 8 \
     --batch_size 8 \
     --cutoff_len 2048 \
-    --wandb_project 判别器 \
+    --wandb_project disc \
     --wandb_run_name $exp_tag \
     --num_epochs 1 \
     --val_set_size 100 \
@@ -55,16 +55,16 @@ python finetune.py \
 # python merge/src/export_model.py \
 #     --model_name 'LLaMA2' \
 #     --model_name_or_path './base_model/LLaMA2-7b-chat-base-model/hf_ckpt' \
-#     --checkpoint_dir './experiments/判别器/LLaMA2/'$exp_tag \
-#     --output_dir './experiments/判别器/LLaMA2/'$exp_tag'/hf_ckpt/'
+#     --checkpoint_dir './experiments/disc_/LLaMA2/'$exp_tag \
+#     --output_dir './experiments/disc_/LLaMA2/'$exp_tag'/hf_ckpt/'
 
 
 echo "*********** infer ***********\n"
 python infer_discriminator.py \
     --model_name 'LLaMA2' \
     --base_model './base_model/LLaMA2-7b-chat-base-model/hf_ckpt' \
-    --lora_weights './experiments/判别器/LLaMA2-判别器/'$exp_tag \
+    --lora_weights './experiments/disc_/LLaMA2-disc/'$exp_tag \
     --use_lora True \
-    --instruct_dir './data/判别器data/train_new.json' \
-    --prompt_template_name_cn '判别器LLaMA2' \
-    --prompt_template_name_en '判别器LLaMA2'
+    --instruct_dir './data/disc_data/train_new.json' \
+    --prompt_template_name_cn 'disc_LLaMA2' \
+    --prompt_template_name_en 'disc_LLaMA2'

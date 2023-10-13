@@ -21,7 +21,7 @@ python infer_discriminator.py \
     --base_model './base_model/LLaMA2-7b-chat-base-model/hf_ckpt' \
     --lora_weights './experiments/判别器/LLaMA2-判别器/'$exp_tag \
     --use_lora True \
-    --instruct_dir './data/判别器data/test_sft.json' \
+    --instruct_dir './data/disc_data/test_sft.json' \
     --prompt_template_name_cn '判别器LLaMA2' \
     --prompt_template_name_en '判别器LLaMA2'
 

@@ -42,8 +42,8 @@ python finetune.py \
     --base_model './base_model/LLaMA2-7b-chat-base-model/hf_ckpt' \
     --data_path './data/diff_len/'$len'/train.json' \
     --output_dir './experiments/diff_len/'$len'/'$exp_tag \
-    --prompt_template_name_cn '可解释推荐LLaMA2' \
-    --prompt_template_name_en '可解释推荐LLaMA2' \
+    --prompt_template_name_cn 'exp_LLaMA2' \
+    --prompt_template_name_en 'exp_LLaMA2' \
     --micro_batch_size 8 \
     --batch_size 8 \
     --cutoff_len 4096 \
@@ -70,6 +70,6 @@ python finetune.py \
 #     --base_model './base_model/LLaMA2-7b-chat-base-model/hf_ckpt' \
 #     --lora_weights './experiments/判别器/LLaMA2-判别器/'$exp_tag \
 #     --use_lora True \
-#     --instruct_dir './data/判别器data/train_new.json' \
+#     --instruct_dir './data/disc_data/train_new.json' \
 #     --prompt_template_name_cn '判别器LLaMA2' \
 #     --prompt_template_name_en '判别器LLaMA2'

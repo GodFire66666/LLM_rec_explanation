@@ -35,14 +35,14 @@ echo "*********** Finetune ***********\n"
 python finetune.py \
     --model_name 'LLaMA2' \
     --base_model './base_model/LLaMA2-7b-chat-base-model/hf_ckpt' \
-    --data_path './data/可解释推荐data/train_new.json' \
-    --output_dir './experiments/可解释推荐/LLaMA2/'$exp_tag \
-    --prompt_template_name_cn '可解释推荐LLaMA2' \
-    --prompt_template_name_en '可解释推荐LLaMA2' \
+    --data_path './data/exp_data/train_new.json' \
+    --output_dir './experiments/exp/LLaMA2/'$exp_tag \
+    --prompt_template_name_cn 'exp_LLaMA2' \
+    --prompt_template_name_en 'exp_LLaMA2' \
     --micro_batch_size 8 \
     --batch_size 8 \
     --cutoff_len 4096 \
-    --wandb_project 可解释推荐 \
+    --wandb_project exp \
     --wandb_run_name $exp_tag \
     --num_epochs 5 \
     --val_set_size 20 \
@@ -63,8 +63,8 @@ echo "*********** infer ***********\n"
 python infer_discriminator.py \
     --model_name 'LLaMA2' \
     --base_model './base_model/LLaMA2-7b-chat-base-model/hf_ckpt' \
-    --lora_weights './experiments/可解释推荐/LLaMA2/'$exp_tag \
+    --lora_weights './experiments/exp/LLaMA2/'$exp_tag \
     --use_lora True \
-    --instruct_dir './data/可解释推荐data/test_new.json' \
-    --prompt_template_name_cn '可解释推荐LLaMA2' \
-    --prompt_template_name_en '可解释推荐LLaMA2'
+    --instruct_dir './data/exp_data/test_new.json' \
+    --prompt_template_name_cn 'exp_LLaMA2' \
+    --prompt_template_name_en 'exp_LLaMA2'
